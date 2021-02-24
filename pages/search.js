@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 
+import Layout from '../components/Layout';
+
 export default function Search() {
   const router = useRouter();
   const query = router.query.q;
@@ -25,7 +27,7 @@ export default function Search() {
   }, [ query ]);
 
   return (
-    <div>
+    <Layout>
       <form onSubmit={(e) => {
         e.preventDefault();
         router.push(`${router.pathname}?q=${inputQuery}`);
@@ -46,6 +48,6 @@ export default function Search() {
           ))}
         </ul>
       )}
-    </div>
+    </Layout>
   );
 }
